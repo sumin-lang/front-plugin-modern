@@ -1,0 +1,57 @@
+import Front from '@frontapp/plugin-sdk';
+import './style.css'; // Vite can import CSS too!
+
+const resultsDiv = document.getElementById('results');
+
+console.log('Plugin initialized.');
+
+// Listen for context updates with the new SDK
+Front.contextUpdates.subscribe(context => {
+  console.log('Conversation context received:', context);
+
+  switch (context.type) {
+    case 'conversation':
+      const inboxId = context.conversation.inbox.id;
+      if (inboxId) {
+        fetchAirtableData(inboxId);
+      }
+      break;
+    default:
+      console.log('Context is not a conversation, ignoring.');
+      break;
+  }
+});
+
+// This function calls our secure proxy API route
+async function fetchAirtableData(inboxId) {
+  resultsDiv.innerHTML = '<p>Searching Airtable...</p>';
+  try {
+    const response = await fetch(`/api/getData?inboxId=${encodeURIComponent(inboxId)}`);
+    if (!response.ok) {
+      throw new Error(`API responded with status: ${response.status}`);
+    }
+    const data = await response.json();
+    displayData(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    resultsDiv.innerHTML = '<p class="error">Could not connect to the Airtable API.</p>';
+  }
+}
+
+// This function displays the data and is unchanged
+function displayData(records) {
+  let html = '<div class="customer-data">';
+  if (records.length === 0) {
+    html += '<p>No records found.</p>';
+  } else {
+    records.forEach(record => {
+      const fields = record.fields;
+      html += `<p><strong>Primary Attorney:</strong> ${fields['Primary Attorney'] || 'N/A'}</p>`;
+      html += `<p><strong>Secondary Attorney:</strong> ${fields['Secondary Attorney'] || 'N/A'}</p>`;
+      // ... add other fields as needed
+      html += '<hr>';
+    });
+  }
+  html += '</div>';
+  resultsDiv.innerHTML = html;
+}
