@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   const { inboxId } = req.query;
-  const apiUrl = process.env.VERCEL_AIRTABLE_API_URL;
+  const apiUrl = process.env.VITE_AIRTABLE_API_URL;
   const secret = process.env.API_SECRET_KEY;
 
   try {
