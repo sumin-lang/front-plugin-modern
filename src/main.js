@@ -11,7 +11,7 @@ Front.contextUpdates.subscribe(context => {
 
   switch (context.type) {
     case 'singleConversation':
-      const inboxId = context.conversation.inbox.id;
+      const inboxId = context.conversation.inboxes[0].id;
       if (inboxId) {
         fetchAirtableData(inboxId);
       }
