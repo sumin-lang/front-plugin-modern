@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   
   try {
     const apiResponse = await fetch(`${apiUrl}/search-by-inbox?inboxId=${inboxId}`, {
-      headers: { 'Authorization': `Bearer ${secret}` }
+      // headers: { 'Authorization': `Bearer ${secret}` }
     });
 
     if (!apiResponse.ok) {
