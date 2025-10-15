@@ -3,6 +3,10 @@ export default async function handler(req, res) {
   const apiUrl = process.env.VITE_AIRTABLE_API_URL;
   const secret = process.env.API_SECRET_KEY;
 
+  // ADD THESE LINES TO DEBUG
+  console.log('Proxy is calling API at:', apiUrl);
+  console.log('Proxy is using secret key ending with:', secret?.slice(-4));
+  
   try {
     const apiResponse = await fetch(`${apiUrl}/search-by-inbox?inboxId=${inboxId}`, {
       headers: { 'Authorization': `Bearer ${secret}` }
