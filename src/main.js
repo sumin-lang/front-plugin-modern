@@ -46,13 +46,13 @@ function displayData(records) {
   } else {
     records.forEach(record => {
       const fields = record.fields;
-      html += `<p><strong>Primary Attorney:</strong> ${fields['Primary Attorney'].Name || 'N/A'}</p>`;
-      html += `<p><strong>Primary Paralegal:</strong> ${fields['Primary Paralegal'].Name || 'N/A'}</p>`;
-      html += `<p><strong>Primary PA:</strong> ${fields['Primary Practice Assistant'].Name || 'N/A'}</p>`;
-      html += `<p><strong>Secondary Attorney:</strong> ${fields['Secondary Attorney'].Name || 'N/A'}</p>`;
-      html += `<p><strong>Secondary Paralegal:</strong> ${fields['Secondary Paralegal'].Name || 'N/A'}</p>`;
-      html += `<p><strong>Secondary PA:</strong> ${fields['Secondary Practice Assistant'].Name || 'N/A'}</p>`;
-      html += `<p><strong>Intern:</strong> ${fields['Legal Intern'].Name || 'N/A'}</p>`;
+      html += `<p><strong>Primary Attorney:</strong> ${fields['Primary Attorney'] || 'N/A'}</p>`;
+      html += `<p><strong>Primary Paralegal:</strong> ${fields['Primary Paralegal'] || 'N/A'}</p>`;
+      html += `<p><strong>Primary PA:</strong> ${fields['Primary Practice Assistant'] || 'N/A'}</p>`;
+      html += `<p><strong>Secondary Attorney:</strong> ${fields['Secondary Attorney'] || 'N/A'}</p>`;
+      html += `<p><strong>Secondary Paralegal:</strong> ${fields['Secondary Paralegal'] || 'N/A'}</p>`;
+      html += `<p><strong>Secondary PA:</strong> ${fields['Secondary Practice Assistant'] || 'N/A'}</p>`;
+      html += `<p><strong>Intern:</strong> ${fields['Legal Intern'] || 'N/A'}</p>`;
       html += '<hr>';
     });
   }
