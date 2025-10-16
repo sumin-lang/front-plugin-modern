@@ -5,7 +5,7 @@ export default async function handler(req, res) {
 
   // ADD THESE LINES TO DEBUG
   console.log('Proxy is calling API at:', apiUrl);
-  cconsole.log('Sending Headers:', JSON.stringify(headers, null, 2));
+  console.log('Sending Headers:', JSON.stringify(headers, null, 2));
   
   try {
     const apiResponse = await fetch(`${apiUrl}/search-by-inbox?inboxId=${inboxId}`, {
