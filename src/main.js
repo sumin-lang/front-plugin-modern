@@ -63,7 +63,7 @@ function displayData(records) {
   ];
 
   // --- Primary Team ---
-  html += '<h4>Primary Team</h4>';
+  html += '<h4>Primary</h4>';
   html += '<div class="customer-data">'; // Start the first grid
   fieldsToDisplay1.forEach(item => {
     html += `<div class="data-label">${item.label}:</div>`;
@@ -72,7 +72,7 @@ function displayData(records) {
   html += '</div>'; // End the first grid
 
   // --- Secondary Team ---
-  html += '<h4>Secondary Team</h4>';
+  html += '<h4>Secondary</h4>';
   html += '<div class="customer-data">'; // Start the second grid
   fieldsToDisplay2.forEach(item => {
     html += `<div class="data-label">${item.label}:</div>`;
