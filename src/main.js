@@ -55,7 +55,35 @@ function displayData(records) {
       html += `<p><strong>Intern:</strong> ${fields['Legal Intern'] || 'N/A'}</p>`;
       html += '<hr>';
     });
+
+    const fields = records[0].fields;
+
+    const fieldsToDisplay1 = [
+      { label: 'Attorney', value: fields['Primary Attorney'] },
+      { label: 'Paralegal', value: fields['Primary Paralegal'] },
+      { label: 'PA', value: fields['Primary Practice Assistant'] },
+    ];
+
+    const fieldsToDisplay2 = [
+      { label: 'Attorney', value: fields['Secondary Attorney'] },
+      { label: 'Paralegal', value: fields['Secondary Paralegal'] },
+      { label: 'PA', value: fields['Secondary Practice Assistant'] },
+      { label: 'Intern', value: fields['Legal Intern'] },
+    ];
+
+    html += '<h4>Primary Team</h4>';
+    fieldsToDisplay1.forEach(item => {
+      html += `<div class="data-label">${item.label}:</div>`;
+      html += `<div class="data-value">${item.value || 'N/A'}</div>`;
+    });
+
+    html += '<h4>Secondary Team</h4>';
+    fieldsToDisplay2.forEach(item => {
+      html += `<div class="data-label">${item.label}:</div>`;
+      html += `<div class="data-value">${item.value || 'N/A'}</div>`;
+    });    
   }
+
   html += '</div>';
   resultsDiv.innerHTML = html;
 }
