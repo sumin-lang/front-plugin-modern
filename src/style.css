@@ -1,28 +1,63 @@
+/*
+  1. Add support for light and dark color schemes.
+  2. Define CSS variables for colors.
+*/
+:root {
+  color-scheme: light dark;
+  --text-color: #213547;
+  --bg-color: #ffffff;
+  --label-color: #555;
+  --border-color: #eee;
+}
+
+/* Define dark mode colors using a media query */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: rgba(255, 255, 255, 0.87);
+    --bg-color: #242424;
+    --label-color: #999;
+    --border-color: #444;
+  }
+}
+
+/* Apply the color variables */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   margin: 15px;
-  color: #333;
   font-size: 14px;
+  color: var(--text-color);
+  background-color: var(--bg-color);
 }
 
-#app h4 {
+/* Header for the entire plugin */
+#app > h4 {
   margin-top: 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 10px;
 }
 
-/* New styles for the grid layout */
+/* Headers for the tables */
+h4 {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 16px 0 8px 0;
+}
+
+/*
+  3. Update the grid to have a fixed-width first column for better alignment.
+*/
 .customer-data {
   display: grid;
-  grid-template-columns: auto 1fr; /* Two columns: label width is auto, value takes the rest */
-  gap: 8px 12px; /* Space between rows and columns */
+  grid-template-columns: 85px 1fr; /* Fixed width for labels, the rest for values */
+  gap: 8px 12px;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .data-label {
   font-weight: 600;
   text-align: right;
-  color: #555;
+  color: var(--label-color);
 }
 
 .data-value {
